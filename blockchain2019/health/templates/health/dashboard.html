@@ -1,0 +1,46 @@
+{% extends "health/base.html" %}
+{% load staticfiles %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'health/css/dashboard.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row profile">
+		<div class="col-md-6">
+			<div class="profile-sidebar">
+				<!-- SIDEBAR USERPIC -->
+				<!-- <div class="profile-userpic">
+					<img src="http://keenthemes.com/preview/metronic/theme/assets/admin/pages/media/profile/profile_user.jpg" class="img-responsive" alt="">
+				</div> -->
+				<!-- END SIDEBAR USERPIC -->
+				<!-- SIDEBAR USER TITLE -->
+				<div class="profile-usertitle">
+					<div class="profile-usertitle-name">
+						{{client.person.name}}
+					</div>
+          <div class="profile-usertitle-name">
+						{{client.person.email}}
+					</div>
+          <div class="profile-usertitle-name">
+						{{client.sin}}
+					</div>
+          <div class="profile-usertitle-name">
+						{{client.msp}}
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div class="col-md-6">
+        <button type="button" class="btn btn-primary btn-xlarge">Prescriptions</button><br><br>
+        <button type="button" class="btn btn-primary btn-xlarge">Pharmacy</button><br><br>
+        <a type="button" href="{% url 'checkup' client_id %}" class="btn btn-primary btn-xlarge">CheckUp Appointment</a><br><br>
+        <button type="button" class="btn btn-primary btn-xlarge">Family Members</button><br><br>
+        <button type="button" class="btn btn-primary btn-xlarge">Pay Insurace</button><br><br>
+		</div>
+	</div>
+</div>
+<br>
+<br>
+{% endblock %}

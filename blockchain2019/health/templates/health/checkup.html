@@ -1,0 +1,42 @@
+{% extends "health/base.html" %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'health/css/login.css' %}">
+{% endblock %}
+{% block content %}
+<div class="card container wrapper">
+<article class="card-body">
+<!-- <a href="" class="float-right btn btn-outline-primary">Sign up</a> -->
+<h4 class="card-title mb-4 mt-1">Check up for client {{client_id}}</h4>
+	 <form method="post">
+    {% csrf_token %}
+    <!-- <div class="form-group">
+    	<label>Doctor</label>
+        <input type="{{form.doctor.type}}" id="{{form.doctor.id_for_label}}" name="{{form.doctor.name}}" class="form-control">
+    </div>
+    <div class="form-group">
+    	<label>Hospital</label>
+        <input type="{{form.hospital.type}}" id="{{form.hospital.id_for_label}}" class="form-control" name="{{form.hospital.name}}">
+    </div>
+    <div class="form-group">
+    	<label>Date</label>
+        <input type="{{form.date.type}}" id="{{form.date.id_for_label}}" name="{{form.date.name}}" class="form-control" placeholder="Personal Id">
+    </div>
+    <div class="form-group">
+        <button formaction="{% url 'login' %}" type="submit" class="btn btn-primary btn-block"> Book appointment  </button>
+    </div> -->
+    {% for field in form %}
+    <div class="form-group">
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field|add_class:'form-control' }}
+          </div>
+        {% endfor %}
+        <div class="form-group">
+            <a href="{% url 'dashboard' client_id %}" class="btn btn-primary btn-block"> Book Appointment </a>
+        </div> <!-- form-group// -->
+</form>
+</article>
+</div> <!-- card.// -->
+{% endblock %}

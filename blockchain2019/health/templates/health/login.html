@@ -1,0 +1,34 @@
+{% extends "health/base.html" %}
+{% load staticfiles %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'health/css/login.css' %}">
+{% endblock %}
+{% block content %}
+<div class="card container wrapper">
+<article class="card-body">
+<a href="" class="float-right btn btn-outline-primary">Sign up</a>
+<h4 class="card-title mb-4 mt-1">Sign in</h4>
+	 <form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+    	<label>Your Personal Id</label>
+        <input id="{{form.client_id.id_for_label}}" name="{{form.client_id.name}}" class="form-control" placeholder="Personal Id">
+    </div> <!-- form-group// -->
+    <div class="form-group">
+    	<a class="float-right" href="#">Forgot?</a>
+    	<label>Your password</label>
+        <input id="{{form.password.id_for_label}}" class="form-control" placeholder="******" type="password" name="{{form.password.name}}">
+    </div> <!-- form-group// -->
+    <div class="form-group">
+    <div class="checkbox">
+      <label> <input type="checkbox"> Save password </label>
+    </div> <!-- checkbox .// -->
+    </div> <!-- form-group// -->
+    <div class="form-group">
+        <button formaction="{% url 'login' %}" type="submit" class="btn btn-primary btn-block"> Login  </button>
+    </div> <!-- form-group// -->
+</form>
+</article>
+</div> <!-- card.// -->
+{% endblock %}
